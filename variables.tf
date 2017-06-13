@@ -44,14 +44,17 @@ variable "amis" {
   description = "Which AMI to spawn. Defaults to the Weave ECS AMIs: https://github.com/weaveworks/integrations/tree/master/aws/ecs"
 
   default = {
-    us-east-1      = "ami-49617b23"
-    us-west-1      = "ami-24057b44"
-    us-west-2      = "ami-3cac5c5c"
-    us-west-2      = "ami-1025aa63"
-    eu-central-1   = "ami-e010f38f"
-    ap-northeast-1 = "ami-54d5cc3a"
-    ap-southeast-1 = "ami-664d9905"
-    ap-southeast-2 = "ami-c2e9c4a1"
+    us-east-1      = "ami-f560d8e3"
+    us-east-2      = "ami-13e2c676"
+    us-west-1      = "ami-95cc97f5"
+    us-west-2      = "ami-4fe87c2f"
+    eu-west-1      = "ami-13c8f475"
+    eu-west-2      = "ami-8a6276ee"
+    eu-central-1   = "ami-216dbc4e"
+    ap-northeast-1 = "ami-b2efb5d5"
+    ap-southeast-1 = "ami-e152ee82"
+    ap-southeast-2 = "ami-ac1b14cf"
+    ca-central-1   = "ami-8104b9e5"
   }
 }
 
