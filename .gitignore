@@ -5,6 +5,10 @@
 *.pem
 init.txt
 
+# exports for AWS / TF Configuration
+exports.sh
+
+
 ## Terraform
 ##
 

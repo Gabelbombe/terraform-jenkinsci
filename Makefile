@@ -12,7 +12,7 @@
 
 # ####################################################
 #
-STATEBUCKET = terraform-jenkins
+STATEBUCKET = terraform-jenkinsci
 PREFIX = jenkins
 ENV = demo												## NOTE: This need to come in as a var!!!
 
