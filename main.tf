@@ -84,7 +84,7 @@ resource "aws_security_group" "sg_jenkins" {
   }
 }
 
-resource "template_file" "user_data" {
+data "template_file" "user_data" {
   template = "${file("templates/user_data.tpl")}"
 }
 
@@ -93,7 +93,7 @@ resource "aws_instance" "jenkins" {
   security_groups = ["${aws_security_group.sg_jenkins.name}"]
   ami             = "${lookup(var.amis, var.region)}"
   key_name        = "${var.key_name}"
-  user_data       = "${template_file.user_data.rendered}"
+  user_data       = "${data.template_file.user_data.rendered}"
 
   tags {
     "Name" = "${var.jenkins_name}"
