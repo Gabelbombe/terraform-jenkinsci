@@ -30,7 +30,7 @@ all: init.txt plan
 
 plan:
 	@echo "running terraform plan"
-	terraform plan
+	terraform plan -out out/outfile.json
 
 apply:
 	@echo running terraform apply

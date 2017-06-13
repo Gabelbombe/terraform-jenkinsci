@@ -4,7 +4,7 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-resource "terraform_remote_state" "tfstate" {
+data "terraform_remote_state" "tfstate" {
   backend = "s3"
 
   config {
@@ -90,7 +90,7 @@ data "template_file" "user_data" {
 
 resource "aws_instance" "jenkins" {
   instance_type   = "${var.instance_type}"
-  security_groups = ["${aws_security_group.sg_jenkins.name}"]
+  security_groups = ["${aws_security_group.sg_jenkins.id}"]
   ami             = "${lookup(var.amis, var.region)}"
   key_name        = "${var.key_name}"
   user_data       = "${data.template_file.user_data.rendered}"
