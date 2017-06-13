@@ -90,7 +90,7 @@ data "template_file" "user_data" {
 
 resource "aws_instance" "jenkins" {
   instance_type   = "${var.instance_type}"
-  security_groups = ["${aws_security_group.sg_jenkins.id}"]
+  security_groups = ["${aws_security_group.sg_jenkins.name}"]
   ami             = "${lookup(var.amis, var.region)}"
   key_name        = "${var.key_name}"
   user_data       = "${data.template_file.user_data.rendered}"

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -euo pipefail
+#!/bin/bash
 
 JENKINS_HOME=/opt/jenkins
 USAGE="Usage: $0 \${access_key} \${secret_key} \${aws_bucket} \${jenkins_name}"
