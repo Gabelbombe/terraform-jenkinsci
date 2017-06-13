@@ -14,6 +14,7 @@
 #
 STATEBUCKET = terraform-jenkinsci
 PREFIX = jenkins
+ENV = demo
 
 # # Before we start test that we have the mandatory executables available
 	EXECUTABLES = git terraform

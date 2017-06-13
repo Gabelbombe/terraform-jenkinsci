@@ -8,7 +8,7 @@ data "terraform_remote_state" "tfstate" {
   backend = "s3"
 
   config {
-    bucket = "terraform-jenkinsci"
+    bucket = "${var.s3_bucket}"
     key    = "terraform/terraform-${var.env}.tfstate"
     region = "${var.region}"
   }
