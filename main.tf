@@ -2,7 +2,6 @@ provider "aws" {
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
   region     = "${var.region}"
-  env        = "${var.env}"
 }
 
 resource "terraform_remote_state" "tfstate" {
@@ -104,10 +103,10 @@ resource "aws_instance" "jenkins" {
   # Add backup task to crontab
   provisioner "file" {
     connection {
-      user     = "ec2-user"
-      host     = "${aws_instance.jenkins.public_ip}"
-      timeout  = "1m"
-      key_file = "${var.key_name}.pem"
+      user        = "ec2-user"
+      host        = "${aws_instance.jenkins.public_ip}"
+      timeout     = "1m"
+      private_key = "${var.key_name}.pem"
     }
 
     source      = "templates/cron.sh"
@@ -116,10 +115,10 @@ resource "aws_instance" "jenkins" {
 
   provisioner "remote-exec" {
     connection {
-      user     = "ec2-user"
-      host     = "${aws_instance.jenkins.public_ip}"
-      timeout  = "1m"
-      key_file = "${var.key_name}.pem"
+      user        = "ec2-user"
+      host        = "${aws_instance.jenkins.public_ip}"
+      timeout     = "1m"
+      private_key = "${var.key_name}.pem"
     }
 
     # NOTE: Should inline have an env setting as well so we don't hit collisions?
