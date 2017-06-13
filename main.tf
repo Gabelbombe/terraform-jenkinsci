@@ -9,9 +9,9 @@ resource "terraform_remote_state" "tfstate" {
   backend = "s3"
 
   config {
-    bucket = "corpname-terraform"
-    key    = "terraform/terraform.tfstate"
-    region = "us-east-1"
+    bucket = "terraform-jenkins"
+    key    = "terraform/terraform-${var.env}.tfstate"
+    region = "${var.region}"
   }
 }
 
@@ -98,6 +98,7 @@ resource "aws_instance" "jenkins" {
 
   tags {
     "Name" = "${var.jenkins_name}"
+    "Env"  = "${var.env}"
   }
 
   # Add backup task to crontab
@@ -121,6 +122,7 @@ resource "aws_instance" "jenkins" {
       key_file = "${var.key_name}.pem"
     }
 
+    # NOTE: Should inline have an env setting as well so we don't hit collisions?
     inline = [
       "chmod +x /home/ec2-user/cron.sh",
       "/home/ec2-user/cron.sh ${var.access_key} ${var.secret_key} ${var.s3_bucket} ${var.jenkins_name}",
