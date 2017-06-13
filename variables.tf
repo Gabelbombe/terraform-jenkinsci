@@ -68,3 +68,6 @@ variable "s3_bucket" {
   description = "S3 bucket where remote state and Jenkins data will be stored"
   default     = "corpname-jenkins"
 }
+
+#<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>#
+
