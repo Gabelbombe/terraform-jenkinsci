@@ -106,7 +106,7 @@ resource "aws_instance" "jenkins" {
       user        = "ec2-user"
       host        = "${aws_instance.jenkins.public_ip}"
       timeout     = "1m"
-      private_key = "${var.key_name}.pem"
+      private_key = "${file("~/.ssh/${var.key_name}.pem")}"
     }
 
     source      = "templates/cron.sh"
@@ -118,7 +118,7 @@ resource "aws_instance" "jenkins" {
       user        = "ec2-user"
       host        = "${aws_instance.jenkins.public_ip}"
       timeout     = "1m"
-      private_key = "${var.key_name}.pem"
+      private_key = "${file("~/.ssh/${var.key_name}.pem")}"
     }
 
     # NOTE: Should inline have an env setting as well so we don't hit collisions?
